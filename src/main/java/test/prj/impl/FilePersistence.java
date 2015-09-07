@@ -41,9 +41,11 @@ public class FilePersistence implements Persistence {
         CsvSchema schema = new CsvSchema.Builder()
                 .addColumn("id")
                 .addColumn("name")
+                .addColumn("type")
                 .addColumn("latitude")
                 .addColumn("longitude")
                 .setNullValue("NULL")
+                .setUseHeader(true)
                 .build();
         try {
             mapper.writer().with(schema).with(JsonGenerator.Feature.IGNORE_UNKNOWN)
